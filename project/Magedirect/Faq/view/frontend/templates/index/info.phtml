@@ -1,0 +1,42 @@
+<?php
+
+$info =  $block->getInfo();
+
+?>
+				
+<form action="<?= "{$this->getBaseUrl(true)}faq/index/save" ?>" method="get" id="form-validate" class="form">
+    <input type="hidden" name="id" value="<?= empty($info['id'])?'':$info['id'] ?>" title="id" />
+				
+    <fieldset class="fieldset" data-hasrequired="* Required Fields">				
+        <legend class="legend"><span>Edit notcie</span></legend><br />				
+        <div class="field firstname required">				
+            <label for="name" class="label">name</label>				
+            <div class="control">				
+                <input type="text" name="title" id="title" value="<?=  empty($info['name'])?'':$info['name'] ?>" title="title" class="required-entry input-text" />
+            </div>				
+        </div>				
+        <div class="field lastname required">				
+            <label for="content" class="label">content</label>				
+            <div class="control">				
+                <input type="text" name="content" id="content" value="<?= empty($info['content'])?'':$info['content'] ?>" title="content" class="required-entry input-text" />
+            </div>				
+        </div>
+
+
+        <div class="field lastname required">				
+            <label for="accountType" class="label">active</label>
+            <div class="control">				
+                <select name="is_active">
+                    <?php  $res = empty($info['is_active'])?0:1; ?>
+                    <option value="0" <?php $res==0?'selected="selected"':'' ?>>NO</option>
+                    <option value="1" <?php $res==1?'selected="selected"':'' ?>>Yes</option>
+                </select>				
+            </div>				
+        </div>				
+				
+				
+    </fieldset>				
+    <div class="actions-toolbar">				
+        <button name="submit" class="action primary" type="submit"><span>Submit</span></button>				
+    </div>				
+</form>

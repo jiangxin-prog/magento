@@ -1,0 +1,47 @@
+<h1>list</h1>
+<table class="email-items">
+    <thead>
+        <tr>
+
+            <th class="item-info">
+                ID
+            </th>
+            <th class="item-info">
+                title
+            </th>
+
+            <th class="item-info">
+                content
+            </th>
+            <th class="item-info">
+                is_active
+            </th>
+            <th class="item-info">
+                operation
+            </th>
+        </tr>
+    </thead>
+
+    <tbody class="cart item">
+        <?php if ($data = $block->getList()) : ?>
+            <?php $status_msg = array('0' => 'NO', '1' => 'YES'); ?>
+            <?php foreach ($data as $key => $item) : ?>
+                <tr class="item-info">
+                    <td data-th="Item" class="col item"><?= $item['faq_id'] ?></td>
+                    <td data-th="Item" class="col item"><?= $item['title'] ?></td>
+                    <td data-th="Item" class="col item"><?= $item['content'] ?></td>
+                    <td data-th="Item" class="col item"><?= $status_msg[$item['is_active']] ?></td>
+                    <td data-th="Item" class="col item">
+                        <div class="action primary"><a style="color: #fff" href="<?= "{$this->getBaseUrl(true)}faq/index/info?faq_id=" .$item['faq_id'] ?>">edit</a></div>|
+                        <div class="action primary"><a style="color: #fff" href="<?= "{$this->getBaseUrl(true)}faq/index/delete?faq_id=" . $item['faq_id'] ?>">delete</a></div>
+                    </td>
+                </tr>
+            <?php endforeach;?>
+        <?php endif; ?>
+    </tbody>
+    <tfoot class="order-totals">
+        <div class="actions-toolbar">
+            <div class="action primary"><a style="color: #fff" href="<?= "{$this->getBaseUrl(true)}faq/index/info" ?>">Adding faq</a></div>
+        </div>
+    </tfoot>
+</table>

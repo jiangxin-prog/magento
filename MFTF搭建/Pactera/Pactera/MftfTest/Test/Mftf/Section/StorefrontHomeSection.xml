@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Page/etc/SectionObject.xsd">
+    <section name="StorefrontHomeSection">
+        <!-- 登录标签元素 -->
+        <element name="loginButton" type="text" selector=".authorization-link" timeout="35"/>
+    </section>
+</sections>

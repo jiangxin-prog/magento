@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 打开商品详细页面 -->
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+    <actionGroup name="ProductDetailActionGroup">
+        <annotations>
+            <description value="Open Product Detail." />
+        </annotations>
+        <arguments>
+            <argument name="picName" defaultValue="" type="string" />
+            <argument name="categoryUrl" defaultValue="" type="string" />
+            <argument name="productUrl" defaultValue="" type="string" />
+        </arguments>
+        <!-- 
+			1-1. 打开商品详情页面，1-2. 调整窗口大小，1-3. 页面截图保存文件
+		-->
+        <amOnPage url="{{categoryUrl}}{{productUrl}}" stepKey="navigateToProductDetail" />
+        <resizeWindow width="2560" height="1440" stepKey="navigateToProductDetailResizeWindow" />
+        <makeScreenshot userInput="{{picName}}-1-product-detail-page" stepKey="navigateToProductDetailScreenshot" />
+    </actionGroup>
+</actionGroups>

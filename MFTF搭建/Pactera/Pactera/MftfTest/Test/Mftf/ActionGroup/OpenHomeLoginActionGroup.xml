@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 打开首页并登录 -->
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+	<actionGroup name="OpenHomeLoginActionGroup" extends="OpenHomeActionGroup">
+		<annotations>
+			<description value="Login Home Page." />
+		</annotations>
+		<arguments>
+			<argument name="username" defaultValue="" type="string" />
+			<argument name="password" defaultValue="" type="string" />
+		</arguments>
+		<!-- 
+			2-1. 点击跳转到登录页面， 2-2. 调整窗口大小，2-3. 页面截图保存文件
+		-->
+		<click selector="{{StorefrontHomeSection.loginButton}}" stepKey="clickLogin" />
+		<resizeWindow width="2560" height="1440" stepKey="clickLoginResizeWindow" />
+		<makeScreenshot userInput="{{picName}}-2-login-page" stepKey="clickLoginScreenshot" />
+		<!-- 
+			3-1. 录入账号信息，3-2. 调整窗口大小，3-3. 页面截图保存文件
+		-->
+		<fillField selector="#email" userInput="{{username}}" stepKey="loginUsername" />
+		<resizeWindow width="2560" height="1440" stepKey="loginUsernameResizeWindow" />
+		<makeScreenshot userInput="{{picName}}-3-username-page" stepKey="loginUsernameScreenshot" />
+		<!-- 
+			4-1. 录入密码信息，4-2. 调整窗口大小，4-3. 页面截图保存文件
+		-->
+		<fillField selector="#pass" userInput="{{password}}" stepKey="loginPassword" />
+		<resizeWindow width="2560" height="1440" stepKey="loginPasswordResizeWindow" />
+		<makeScreenshot userInput="{{picName}}-4-password-page" stepKey="loginPasswordScreenshot" />
+		<!-- 
+			5-1. 点击登录跳转，5-2. 调整窗口大小，5-3. 页面截图保存文件
+		-->
+		<click selector="#send2" stepKey="clickLoginJump" />
+		<resizeWindow width="2560" height="1440" stepKey="clickLoginJumpResizeWindow" />
+		<makeScreenshot userInput="{{picName}}-5-login-jump-page" stepKey="clickLoginJumpScreenshot" />
+	</actionGroup>
+</actionGroups>

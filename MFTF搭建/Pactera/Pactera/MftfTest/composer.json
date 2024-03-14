@@ -1,0 +1,21 @@
+{
+    "name": "rely/module-mftftest",
+    "description": "",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "email": "kai.xu4@pactera.com",
+            "name": "xu kai"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Rely\\RoutingBefore\\": ""
+        }
+    }
+}

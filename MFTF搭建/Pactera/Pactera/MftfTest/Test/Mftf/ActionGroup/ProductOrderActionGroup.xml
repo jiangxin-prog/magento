@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 商品下单 -->
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+    <actionGroup name="ProductOrderActionGroup" extends="ProductDetailActionGroup">
+        <annotations>
+            <description value="Add product to shopping cart." />
+        </annotations>
+
+        
+        <!-- 
+			2-1. 商品加入购物车，2-2. 调整窗口大小，2-3. 页面截图保存文件
+		-->
+
+        <click selector="#product-options-wrapper > .fieldset > .swatch-opt > .size > .swatch-attribute-options > .swatch-option:nth-child(1)" stepKey="clickAddCartSize" />
+        <click selector="#product-options-wrapper > .fieldset > .swatch-opt > .color > .swatch-attribute-options > .swatch-option:nth-child(1)" stepKey="clickAddCartColor" />
+        <click selector="#product-addtocart-button" stepKey="clickAddCart" />
+        <resizeWindow width="2560" height="1440" stepKey="clickAddCartResizeWindow" />
+        <makeScreenshot userInput="{{picName}}-2-add-cart" stepKey="clickAddCartScreenshot" />
+
+        <!-- 
+			2-2. 进入购物车画面，2-2. 调整窗口大小，2-3. 页面截图保存文件
+		-->
+        <!-- <click selector=".minicart-wrapper" stepKey="clickGoCart" />
+        <click selector=".viewcart" stepKey="clickGoCartView" /> -->
+        <amOnPage url="/checkout/cart/" stepKey="goCartPage" />
+        <resizeWindow width="2560" height="1440" stepKey="clickGoCartResizeWindow" />
+        <makeScreenshot userInput="{{picName}}-2-go-cart" stepKey="clickGoCartScreenshot" />
+
+        <!-- 
+			3-1. 等待页面跳转结束，3-2. 调整窗口大小，3-3. 页面截图保存文件
+		-->
+        <waitForPageLoad stepKey="checkoutWaitFor" />
+        <resizeWindow width="2560" height="1440" stepKey="checkoutWaitForResizeWindow" />
+        <makeScreenshot userInput="{{picName}}-3-wait-checkout" stepKey="checkoutWaitForScreenshot" />
+        <!-- 
+			4-1. 商品下单，4-2. 等待页面加载，4-3. 调整窗口大小，4-4. 页面截图保存文件
+		-->
+        <click selector=".checkout-methods-items > .item:nth-child(1) > button" stepKey="clickCheckout" />
+        <waitForPageLoad stepKey="shippingWaitFor" />
+        <resizeWindow width="2560" height="1440" stepKey="clickCheckoutResizeWindow" />
+        <makeScreenshot userInput="{{picName}}-4-click-checkout" stepKey="clickCheckoutScreenshot" />
+        <!-- 
+			5-1. 商品下单，5-2. 调整窗口大小，5-3. 页面截图保存文件
+		-->
+        
+        <click selector=".table-checkout-shipping-method > tbody > .row:nth-child(1)" stepKey="shippingRate" />
+        <click selector="#shipping-method-buttons-container > .primary > .continue" stepKey="shippingSubmit" />
+        <waitForPageLoad stepKey="shippingSubmitWaitFor" />
+        <resizeWindow width="2560" height="1440" stepKey="shippingSubmitResizeWindow" />
+        <makeScreenshot userInput="{{picName}}-5-shipping-submit" stepKey="shippingSubmitScreenshot" />
+
+         <!-- 
+			6-1. 商品下单，6-2. 调整窗口大小，6-3. 页面截图保存文件
+		-->
+        <click selector=".payment-method-content > .actions-toolbar > .primary" stepKey="placeOrderSubmit" />
+        <waitForPageLoad stepKey="placeOrderSubmitWaitFor" />
+        <resizeWindow width="2560" height="1440" stepKey="placeOrderSubmitResizeWindow" />
+        <makeScreenshot userInput="{{picName}}-6-place-order-submit" stepKey="placeOrderSubmitScreenshot" />
+    </actionGroup>
+</actionGroups>

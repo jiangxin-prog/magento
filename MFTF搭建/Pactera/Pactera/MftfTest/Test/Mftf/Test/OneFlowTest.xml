@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="OneFlowTest" insertBefore="" insertAfter="">
+        <!-- 注释部分 -->
+        <annotations>
+            <description value="first operation flow." />
+        </annotations>
+        <!-- 执行 test 的前提条件 -->
+        <before></before>
+        <!-- <test> 之后要执行的步骤 -->
+        <after></after>
+        <!-- 1. 调用首页访问, 并且登录 -->
+        <actionGroup ref="OpenHomeLoginActionGroup" stepKey="openHomeLoginActionGroupStepKey">
+            <argument name="picName" value="OneStepLogin" />
+            <argument name="username" value="roni_cost@example.com" />
+            <argument name="password" value="roni_cost3@example.com" />
+        </actionGroup>
+        <!-- 2. 商品下单 -->
+        <actionGroup ref="ProductOrderActionGroup" stepKey="ProductOrderActionGroupStepKey">
+            <argument name="picName" value="case1" />
+            <argument name="categoryUrl" value="women/tops-women/" />
+            <argument name="productUrl" value="juno-jacket.html" />
+        </actionGroup>
+        <actionGroup ref="ProductOrderActionGroup" stepKey="ProductOrderActionGroupStepKey2">
+            <argument name="picName" value="case2" />
+            <argument name="categoryUrl" value="women/tops-women/" />
+            <argument name="productUrl" value="nadia-elements-shell.html" />
+        </actionGroup>
+        <!-- 3. 选择一种支付方式支付 -->
+        <!-- <actionGroup ref="PayEasyActionGroup" stepKey="PayEasyActionGroupStepKey">
+            <argument name="picName" value="ThreeStepPay" />
+        </actionGroup> -->
+    </test>
+</tests>

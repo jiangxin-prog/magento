@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 预付款支付 -->
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+    <actionGroup name="PayEasyActionGroup">
+        <annotations>
+            <description value="Pay Easy Payment." />
+        </annotations>
+        <arguments>
+            <argument name="picName" defaultValue="" type="string" />
+        </arguments>
+        <!-- 
+			1-1. 预付款支付，1-2. 调整窗口大小，1-3. 页面截图保存文件
+		-->
+        <click selector="#sbps_payeasy" stepKey="payEasySelected" />
+        <waitForPageLoad stepKey="payEasySelectedWaitFor" />
+        <resizeWindow width="2560" height="1440" stepKey="payEasySelectedResizeWindow" />
+        <makeScreenshot userInput="{{picName}}-1-pay-easy" stepKey="payEasySelectedScreenshot" />
+        <!-- 
+			2-1. 点击确认下单，2-2. 调整窗口大小，2-3. 页面截图保存文件
+		-->
+        <click selector="#sbps_payeasy-form + .actions-toolbar > .primary > .checkout" stepKey="payEasySubmit" />
+        <resizeWindow width="2560" height="1440" stepKey="payEasySubmitResizeWindow" />
+        <makeScreenshot userInput="{{picName}}-2-pay-easy-submit" stepKey="payEasySubmitScreenshot" />
+        <!-- 
+			3-1. 加载页面，3-2. 调整窗口大小，3-3. 页面截图保存文件
+		-->
+        <waitForPageLoad stepKey="reviewWaitFor" />
+        <resizeWindow width="2560" height="1440" stepKey="reviewResizeWindow" />
+        <makeScreenshot userInput="{{picName}}-3-pay-review" stepKey="reviewScreenshot" />
+        <!-- 
+			4-1. 注文确认，4-2. 调整窗口大小，4-3. 页面截图保存文件
+		-->
+        <click selector="#order-place-button > .actions-toolbar > .primary > .primary" stepKey="confirmOrder" />
+        <resizeWindow width="2560" height="1440" stepKey="confirmOrderResizeWindow" />
+        <makeScreenshot userInput="{{picName}}-4-confirm-order" stepKey="confirmOrderScreenshot" />
+        <!-- 
+			5-1. 订单加载完成，5-2. 调整窗口大小，5-3. 页面截图保存文件
+		-->
+        <waitForPageLoad stepKey="confirmOrderFinish" />
+        <resizeWindow width="2560" height="1440" stepKey="confirmOrderFinishResizeWindow" />
+        <makeScreenshot userInput="{{picName}}-5-confirm-order-finish" stepKey="confirmOrderFinishScreenshot" />
+    </actionGroup>
+</actionGroups>
